@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="40" viewBox="0 0 160 40" aria-labelledby="title desc" role="img">
+  <title id="title">Equivida</title>
+  <desc id="desc">Logomark for Equivida</desc>
+  <rect width="160" height="40" rx="8" fill="#50358d"/>
+  <text x="20" y="26" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="18" fill="#ffffff">Equivida</text>
+  <circle cx="140" cy="20" r="6" fill="#b7d9bf"/>
+</svg>
+
+

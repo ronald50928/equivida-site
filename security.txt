@@ -1,0 +1,6 @@
+Contact: mailto:contactus@equivida.services
+Policy: https://equivida.services/
+Preferred-Languages: en
+Canonical: https://equivida.services/security.txt
+
+
