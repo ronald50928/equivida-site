@@ -6,6 +6,10 @@
 	--bg: #fafafa;
 	--text: #222222;
 	--muted: #f1eef9;
+	/* Extended palette */
+	--success: #1f9d55;
+	--warning: #e09f3e;
+	--info: #3178c6;
 	--radius: 8px;
 	--maxw: 1120px;
 	--space-1: 4px;
@@ -43,15 +47,24 @@ a:hover, a:focus { text-decoration: underline; }
 .site-header { position: sticky; top: 0; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.06); z-index: 1000; }
 .site-header.glass { background: rgba(255,255,255,.6); backdrop-filter: blur(10px); box-shadow: 0 8px 30px rgba(0,0,0,.08); border-bottom: 1px solid rgba(255,255,255,.3); }
 .site-header.scrolled { background: rgba(255,255,255,.8); box-shadow: 0 10px 32px rgba(0,0,0,.12); }
+.site-header .actions .btn { background: transparent; border-color: #ddd; }
+html[data-theme="dark"] .site-header { background: rgba(10,10,16,.7); }
+html[data-theme="dark"] .site-header.glass { background: rgba(16,16,24,.5); box-shadow: 0 8px 30px rgba(0,0,0,.4); border-bottom-color: rgba(255,255,255,.08); }
+html[data-theme="dark"] .site-header.scrolled { background: rgba(20,20,30,.7); box-shadow: 0 10px 32px rgba(0,0,0,.55); }
 .header-inner { display: flex; gap: var(--space-5); align-items: center; justify-content: space-between; padding: var(--space-4) 0; }
 .nav { display: flex; gap: var(--space-5); list-style: none; margin: 0; padding: 0; }
 .logo img { display: block; }
 /* Theme toggle */
 html[data-theme="dark"] {
 	--bg: #0f0f14;
-	--text: #eaeaf2;
-	--muted: #181824;
+	--text: #e6e6f2;
+	--muted: #171726;
 	--accent: #7e6ac7;
+	--primary: #b8a5ff;
+	--secondary: #88d1a0;
+	--success: #58c38a;
+	--warning: #f0b46a;
+	--info: #7fb4ff;
 }
 
 /* Buttons */
@@ -60,6 +73,8 @@ html[data-theme="dark"] {
 .btn.secondary { background: #6a54b8; color: #fff; }
 .btn.cta { border-color: var(--primary); color: var(--primary); }
 .btn.cta:hover { background: var(--primary); color: #fff; }
+html[data-theme="dark"] .btn.cta { color: var(--primary); border-color: var(--primary); }
+html[data-theme="dark"] .btn.cta:hover { background: var(--primary); color: #0f0f14; }
 
 /* Gradient text utility */
 .gradient-text { background: linear-gradient(90deg, #ffffff, #e9e3ff); -webkit-background-clip: text; background-clip: text; color: transparent; }

@@ -182,8 +182,16 @@
 
 	// Theme toggle (persisted)
 	const themeBtn = document.getElementById('theme-toggle');
+	const logo = document.getElementById('site-logo');
 	if (themeBtn) {
-		const applyTheme = (t) => document.documentElement.setAttribute('data-theme', t);
+		const applyTheme = (t) => {
+			document.documentElement.setAttribute('data-theme', t);
+			const dark = t === 'dark';
+			themeBtn.setAttribute('aria-pressed', String(dark));
+			themeBtn.textContent = dark ? 'Theme: Dark' : 'Theme: Light';
+			themeBtn.title = dark ? 'Switch to light theme' : 'Switch to dark theme';
+			if (logo) logo.src = dark ? '/assets/EQUIVIDA  Black.png' : '/assets/EQUIVIDA  Black.png';
+		};
 		const saved = localStorage.getItem('theme') || 'light';
 		applyTheme(saved);
 		themeBtn.addEventListener('click', () => {
