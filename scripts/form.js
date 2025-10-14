@@ -83,15 +83,18 @@
 			window.addEventListener('mousemove', onMove, { passive: true });
 		}
 
-		// Marquee animation
+		// Marquee animation (pause on hover)
 		const marquee = document.getElementById('marquee-track');
 		if (marquee && !prefersReduced) {
 			let offset = 0;
+			let paused = false;
 			const step = () => {
 				offset = (offset - 0.5) % 10000;
-				marquee.style.transform = `translateX(${offset}px)`;
+				if (!paused) marquee.style.transform = `translateX(${offset}px)`;
 				requestAnimationFrame(step);
 			};
+			marquee.addEventListener('mouseenter', () => { paused = true; });
+			marquee.addEventListener('mouseleave', () => { paused = false; });
 			requestAnimationFrame(step);
 		}
 
@@ -148,24 +151,47 @@
 
 		return;
 	}
+	// Form validation with inline aria-live errors
+	const status = document.getElementById('form-status');
+	const setError = (el, msg, errId) => {
+		el?.setAttribute('aria-invalid', 'true');
+		const err = document.getElementById(errId);
+		if (err) err.textContent = msg;
+	};
+	const clearError = (el, errId) => {
+		el?.removeAttribute('aria-invalid');
+		const err = document.getElementById(errId);
+		if (err) err.textContent = '';
+	};
+
 	form.addEventListener('submit', (e) => {
 		const name = form.querySelector('input[name="name"]');
 		const email = form.querySelector('input[name="email"]');
 		const message = form.querySelector('textarea[name="message"]');
 		let valid = true;
-		[name, email, message].forEach((el) => {
-			if (!el || !el.value.trim()) {
-				el?.setAttribute('aria-invalid', 'true');
-				valid = false;
-			} else {
-				el.removeAttribute('aria-invalid');
-			}
-		});
+		if (!name || !name.value.trim()) { setError(name, 'Please enter your name', 'err-name'); valid = false; } else { clearError(name, 'err-name'); }
+		const emailVal = email?.value.trim() || '';
+		const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+		if (!email || !emailOk) { setError(email, 'Enter a valid email address', 'err-email'); valid = false; } else { clearError(email, 'err-email'); }
+		if (!message || !message.value.trim()) { setError(message, 'Tell us a bit about your goals', 'err-message'); valid = false; } else { clearError(message, 'err-message'); }
 		if (!valid) {
 			e.preventDefault();
-			alert('Please fill out all required fields.');
+			if (status) { status.hidden = false; status.textContent = 'Please fix the errors below and try again.'; }
 		}
 	});
+
+	// Theme toggle (persisted)
+	const themeBtn = document.getElementById('theme-toggle');
+	if (themeBtn) {
+		const applyTheme = (t) => document.documentElement.setAttribute('data-theme', t);
+		const saved = localStorage.getItem('theme') || 'light';
+		applyTheme(saved);
+		themeBtn.addEventListener('click', () => {
+			const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+			applyTheme(next);
+			localStorage.setItem('theme', next);
+		});
+	}
 })();
 
 
