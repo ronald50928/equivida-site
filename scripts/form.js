@@ -190,7 +190,7 @@
 			themeBtn.setAttribute('aria-pressed', String(dark));
 			themeBtn.textContent = dark ? 'Theme: Dark' : 'Theme: Light';
 			themeBtn.title = dark ? 'Switch to light theme' : 'Switch to dark theme';
-			if (logo) logo.src = dark ? '/assets/EQUIVIDA  Black.png' : '/assets/EQUIVIDA  Black.png';
+			if (logo) logo.src = dark ? '/assets/EQUIVIDA transparent.png' : '/assets/EQUIVIDA  Black.png';
 		};
 		const saved = localStorage.getItem('theme') || 'light';
 		applyTheme(saved);
