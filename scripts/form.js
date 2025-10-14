@@ -10,8 +10,10 @@
 			document.documentElement.setAttribute('data-theme', t);
 			const dark = t === 'dark';
 			themeBtn.setAttribute('aria-pressed', String(dark));
-			themeBtn.textContent = dark ? 'Theme: Dark' : 'Theme: Light';
+			// Update icon via aria-hidden glyph; keep button label via aria-label
 			themeBtn.title = dark ? 'Switch to light theme' : 'Switch to dark theme';
+			const icon = themeBtn.querySelector('span[aria-hidden="true"]');
+			if (icon) icon.textContent = dark ? '☀️' : '🌙';
 			if (logo) logo.src = dark ? '/assets/EQUIVIDA transparent.png' : '/assets/EQUIVIDA  Black.png';
 		};
 		const saved = localStorage.getItem('theme') || 'light';
