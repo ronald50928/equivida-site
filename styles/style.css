@@ -48,6 +48,10 @@ a:hover, a:focus { text-decoration: underline; }
 .site-header.glass { background: rgba(255,255,255,.6); backdrop-filter: blur(10px); box-shadow: 0 8px 30px rgba(0,0,0,.08); border-bottom: 1px solid rgba(255,255,255,.3); }
 .site-header.scrolled { background: rgba(255,255,255,.8); box-shadow: 0 10px 32px rgba(0,0,0,.12); }
 .site-header .actions .btn { background: transparent; border-color: #ddd; }
+/* Theme toggle button inverts by theme with higher specificity */
+.site-header .actions .theme-toggle { background: #000; color: #fff; border-color: #000; }
+.site-header .actions .theme-toggle:hover { opacity: .9; }
+html[data-theme="dark"] .site-header .actions .theme-toggle { background: #fff; color: #0f0f14; border-color: #fff; }
 /* Theme toggle button inverts by theme */
 .site-header .theme-toggle { background: #000; color: #fff; border-color: transparent; }
 .site-header .theme-toggle:hover { opacity: .9; }
@@ -59,8 +63,8 @@ html[data-theme="dark"] .site-header.scrolled { background: rgba(20,20,30,.7); b
 .nav { display: flex; gap: var(--space-5); list-style: none; margin: 0; padding: 0; }
 .logo img { display: block; }
 /* Larger logo and nav spacing */
-.header-inner .logo img { height: 125px; width: auto; max-height: none; filter: drop-shadow(0 0 1px rgba(0,0,0,.35)); }
-html[data-theme="dark"] .header-inner .logo img { filter: drop-shadow(0 0 1px rgba(255,255,255,.35)); }
+.header-inner .logo img { height: 125px; width: auto; max-height: none; filter: drop-shadow(0 0 2px rgba(0,0,0,.5)); }
+html[data-theme="dark"] .header-inner .logo img { filter: drop-shadow(0 0 2px rgba(255,255,255,.45)); }
 @media (max-width: 520px) {
 	.header-inner .logo img { height: 56px; }
 }
