@@ -33,6 +33,7 @@ body {
 	color: var(--text);
 	background: var(--bg);
 	text-rendering: optimizeLegibility;
+    color-scheme: light dark;
 }
 
 img { max-width: 100%; height: auto; }

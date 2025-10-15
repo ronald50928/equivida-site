@@ -15,6 +15,9 @@
 			themeBtn.setAttribute('aria-label', themeBtn.title);
 			// Always use transparent logo in both themes per preference
 			if (logo) logo.src = '/assets/EQUIVIDA transparent.png';
+			// Update browser UI theme color
+			const metaTheme = document.querySelector('meta[name="theme-color"]');
+			if (metaTheme) metaTheme.setAttribute('content', dark ? '#0f0f14' : '#50358d');
 			// Toggle icon glyph visibility
 			const iconMoon = document.getElementById('icon-moon');
 			const iconSun = document.getElementById('icon-sun');
