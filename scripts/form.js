@@ -14,8 +14,8 @@
 			themeBtn.title = dark ? 'Switch to light theme' : 'Switch to dark theme';
 			const icon = themeBtn.querySelector('span[aria-hidden="true"]');
 			if (icon) icon.textContent = dark ? '☀️' : '🌙';
-			// Always use transparent logo in both themes as requested
-			if (logo) logo.src = '/assets/EQUIVIDA transparent.png';
+			// Use higher-contrast logo on dark for readability
+			if (logo) logo.src = dark ? '/assets/EQUIVIDA .png' : '/assets/EQUIVIDA transparent.png';
 			// Toggle icon glyph visibility
 			const iconMoon = document.getElementById('icon-moon');
 			const iconSun = document.getElementById('icon-sun');
