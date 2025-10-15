@@ -55,7 +55,8 @@ html[data-theme="dark"] .site-header.scrolled { background: rgba(20,20,30,.7); b
 .nav { display: flex; gap: var(--space-5); list-style: none; margin: 0; padding: 0; }
 .logo img { display: block; }
 /* Larger logo and nav spacing */
-.header-inner .logo img { height: 125px; width: auto; max-height: none; }
+.header-inner .logo img { height: 125px; width: auto; max-height: none; filter: drop-shadow(0 0 1px rgba(0,0,0,.35)); }
+html[data-theme="dark"] .header-inner .logo img { filter: drop-shadow(0 0 1px rgba(255,255,255,.35)); }
 @media (max-width: 520px) {
 	.header-inner .logo img { height: 56px; }
 }
