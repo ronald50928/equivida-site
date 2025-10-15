@@ -49,31 +49,12 @@
         <h1>Let’s Create Together</h1>
         <p class="lead">We’d love to learn about your goals. Let’s design a better workplace together.</p>
 
-        <div id="form-status" class="form-status" aria-live="polite" hidden></div>
-        <form data-contact class="card" action="https://formsubmit.co/contactus@equivida.services" method="post" novalidate>
-          <input type="hidden" name="_captcha" value="true">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-          <input type="hidden" name="_subject" value="Equivida Website Contact">
-          <input type="hidden" name="_template" value="table">
-          <div class="grid" style="gap:16px; grid-template-columns:1fr 1fr;">
-            <label> Name
-              <input required type="text" name="name" autocomplete="name" aria-describedby="err-name" />
-              <span class="error" id="err-name" role="alert"></span>
-            </label>
-            <label> Email
-              <input required type="email" name="email" autocomplete="email" aria-describedby="err-email" />
-              <span class="error" id="err-email" role="alert"></span>
-            </label>
-          </div>
-          <label> Message
-            <textarea required name="message" rows="6" aria-describedby="err-message"></textarea>
-            <span class="error" id="err-message" role="alert"></span>
-          </label>
+        <div class="card" role="region" aria-label="Contact options" style="display:flex;flex-direction:column;gap:16px;">
+          <p>Email works best for now. We’ll reply within 1–2 business days.</p>
           <div class="actions" style="justify-content:flex-start;">
-            <button class="btn primary" type="submit">Send</button>
-            <input type="hidden" name="_next" value="/contact.html?sent=1">
+            <a class="btn primary" href="mailto:contactus@equivida.services?subject=Equivida%20Website%20Inquiry">Email us</a>
           </div>
-        </form>
+        </div>
 
         <section class="section">
           <p><strong>Direct contact:</strong> <a href="mailto:contactus@equivida.services">contactus@equivida.services</a> · Park Ridge, NJ</p>
