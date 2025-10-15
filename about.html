@@ -19,7 +19,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="apple-touch-icon" href="/assets/favicon.ico">
-    <script>(function(){try{var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+    <script>(function(){try{var t=localStorage.getItem('theme');if(!t&&window.matchMedia){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t||'light');}catch(e){}})();</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

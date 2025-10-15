@@ -6,7 +6,7 @@
     <title>Page not found | Equivida</title>
     <meta name="robots" content="noindex">
     <link rel="stylesheet" href="/styles/style.css">
-    <script>(function(){try{var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+    <script>(function(){try{var t=localStorage.getItem('theme');if(!t&&window.matchMedia){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t||'light');}catch(e){}})();</script>
   </head>
   <body>
     <header class="site-header" role="banner">

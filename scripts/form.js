@@ -10,10 +10,9 @@
 			document.documentElement.setAttribute('data-theme', t);
 			const dark = t === 'dark';
 			themeBtn.setAttribute('aria-pressed', String(dark));
-			// Update icon via aria-hidden glyph; keep button label via aria-label
+			// Update button labels for a11y
 			themeBtn.title = dark ? 'Switch to light theme' : 'Switch to dark theme';
-			const icon = themeBtn.querySelector('span[aria-hidden="true"]');
-			if (icon) icon.textContent = dark ? '☀️' : '🌙';
+			themeBtn.setAttribute('aria-label', themeBtn.title);
 			// Always use transparent logo in both themes per preference
 			if (logo) logo.src = '/assets/EQUIVIDA transparent.png';
 			// Toggle icon glyph visibility
@@ -24,7 +23,7 @@
 				else { iconSun.setAttribute('hidden', ''); iconMoon.removeAttribute('hidden'); }
 			}
 		};
-		const saved = localStorage.getItem('theme') || 'light';
+		const saved = localStorage.getItem('theme') || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
 		applyTheme(saved);
 		themeBtn.addEventListener('click', () => {
 			const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
