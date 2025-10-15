@@ -101,7 +101,7 @@ html[data-theme="dark"] .btn.cta:hover { background: var(--primary); color: #0f0
 
 /* Hero */
 .hero { position: relative; overflow: hidden; color: #fff; }
-.hero-inner { padding: calc(var(--space-8) + 32px) 0 var(--space-8); text-align: center; position: relative; z-index: 2; }
+.hero-inner { padding: clamp(72px, 12vw, 128px) 0 clamp(48px, 8vw, 96px); text-align: center; position: relative; z-index: 2; }
 .hero .lead { font-size: 1.125rem; opacity: .95; margin-bottom: var(--space-5); }
 .hero-bg { position: absolute; inset: 0; background: radial-gradient(1200px 800px at 20% 20%, rgba(255,255,255,.08), transparent 60%), radial-gradient(1000px 700px at 80% 30%, rgba(255,255,255,.06), transparent 60%), linear-gradient(135deg, var(--primary), var(--accent)); z-index: 1; filter: saturate(120%); transform: translate3d(var(--parallax-x, 0), var(--parallax-y, 0), 0); transition: transform .2s ease; }
 /* Aurora orbs */
@@ -137,8 +137,8 @@ html[data-theme="dark"] .btn.cta:hover { background: var(--primary); color: #0f0
 
 /* Angled divider for section after hero */
 .hero + .section {
-	position: relative;
-	padding-top: calc(var(--space-7) + 48px);
+    position: relative;
+    padding-top: calc(var(--space-6) + 32px);
 }
 .hero + .section::before {
 	content: "";
@@ -156,7 +156,7 @@ html[data-theme="dark"] .btn.cta:hover { background: var(--primary); color: #0f0
 html[data-theme="dark"] .section.muted { background: #121222; }
 html[data-theme="dark"] .highlights { background: #0f0f14; }
 /* Consistent vertical rhythm */
-.section + .section { padding-top: var(--space-7); }
+/* Removed extra adjacency padding to avoid overly large gaps between sections */
 .container > h1, .container > h2 { margin-top: 0; }
 .container > p.lead { margin-top: var(--space-3); }
 .grid.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-5); }
@@ -246,8 +246,8 @@ html[data-theme="dark"] .timeline-content > section::before { box-shadow: 0 0 0 
 }
 
 /* Footer */
-.site-footer { border-top: 1px solid #eaeaea; margin-top: var(--space-7); }
-.footer-inner { display: grid; gap: var(--space-4); padding: var(--space-6) 0; }
+.site-footer { border-top: 1px solid #eaeaea; margin-top: var(--space-6); }
+.footer-inner { display: grid; gap: var(--space-4); padding: var(--space-5) 0; }
 .footer-nav { list-style: none; display: flex; gap: var(--space-4); margin: 0; padding: 0; flex-wrap: wrap; }
 .footer-meta { color: #555; display: flex; gap: var(--space-3); align-items: center; }
 html[data-theme="dark"] .site-footer { border-top-color: #2a2a3c; }
