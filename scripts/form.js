@@ -14,7 +14,15 @@
 			themeBtn.title = dark ? 'Switch to light theme' : 'Switch to dark theme';
 			const icon = themeBtn.querySelector('span[aria-hidden="true"]');
 			if (icon) icon.textContent = dark ? '☀️' : '🌙';
-			if (logo) logo.src = dark ? '/assets/EQUIVIDA transparent.png' : '/assets/EQUIVIDA  Black.png';
+			// Always use transparent logo in both themes as requested
+			if (logo) logo.src = '/assets/EQUIVIDA transparent.png';
+			// Toggle icon glyph visibility
+			const iconMoon = document.getElementById('icon-moon');
+			const iconSun = document.getElementById('icon-sun');
+			if (iconMoon && iconSun) {
+				if (dark) { iconMoon.setAttribute('hidden', ''); iconSun.removeAttribute('hidden'); }
+				else { iconSun.setAttribute('hidden', ''); iconMoon.removeAttribute('hidden'); }
+			}
 		};
 		const saved = localStorage.getItem('theme') || 'light';
 		applyTheme(saved);
