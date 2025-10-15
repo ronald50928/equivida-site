@@ -38,6 +38,10 @@ body {
 img { max-width: 100%; height: auto; }
 a { color: var(--primary); text-decoration: none; }
 a:hover, a:focus { text-decoration: underline; }
+/* Accent underline for headings and links in light theme */
+h2 { position: relative; }
+h2::after { content: ""; display: block; width: 56px; height: 3px; margin-top: 8px; background: linear-gradient(90deg, var(--secondary), var(--accent)); border-radius: 2px; }
+html[data-theme="dark"] h2::after { background: linear-gradient(90deg, #5aa380, #7e6ac7); opacity: .8; }
 
 .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--space-4); }
 .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
@@ -153,6 +157,8 @@ html[data-theme="dark"] .section.muted { background: #121222; }
 html[data-theme="dark"] .highlights { background: #0f0f14; }
 .grid.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-5); }
 .card { background: #fff; border-radius: var(--radius); padding: var(--space-5); box-shadow: 0 2px 10px rgba(0,0,0,.04); position: relative; }
+.card { border: 1px solid transparent; background-image: linear-gradient(#fff, #fff), linear-gradient(90deg, var(--secondary), var(--accent)); background-origin: border-box; background-clip: padding-box, border-box; }
+html[data-theme="dark"] .card { background-image: linear-gradient(#151527, #151527), linear-gradient(90deg, #5aa380, #7e6ac7); }
 .card:hover { box-shadow: 0 12px 30px rgba(0,0,0,.08); transform: translateY(-2px); transition: transform .2s ease, box-shadow .2s ease; }
 .card:focus-within { outline: 3px solid var(--secondary); }
 

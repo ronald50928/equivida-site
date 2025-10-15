@@ -50,7 +50,11 @@
         <p class="lead">We’d love to learn about your goals. Let’s design a better workplace together.</p>
 
         <div id="form-status" class="form-status" aria-live="polite" hidden></div>
-        <form data-contact class="card" action="#" method="post" novalidate>
+        <form data-contact class="card" action="https://formsubmit.co/contactus@equivida.services" method="post" novalidate>
+          <input type="hidden" name="_captcha" value="true">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_subject" value="Equivida Website Contact">
+          <input type="hidden" name="_template" value="table">
           <div class="grid" style="gap:16px; grid-template-columns:1fr 1fr;">
             <label> Name
               <input required type="text" name="name" autocomplete="name" aria-describedby="err-name" />
@@ -67,6 +71,7 @@
           </label>
           <div class="actions" style="justify-content:flex-start;">
             <button class="btn primary" type="submit">Send</button>
+            <input type="hidden" name="_next" value="/contact.html?sent=1">
           </div>
         </form>
 
