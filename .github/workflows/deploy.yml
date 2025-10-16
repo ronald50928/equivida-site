@@ -9,7 +9,20 @@ permissions:
   contents: read
 
 jobs:
+  validate:
+    name: Validate HTML Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate HTML Quality
+        run: bash scripts/scan-html-issues.sh
+        continue-on-error: false
+
   deploy:
+    name: Deploy to S3
+    needs: validate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -51,5 +64,4 @@ jobs:
       - name: Invalidate CloudFront
         run: |
           aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
-
 
