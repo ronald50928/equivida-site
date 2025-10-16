@@ -1,40 +1,9 @@
 (() => {
 	'use strict';
 
-	// Global: Theme toggle (persisted) and logo swap
-	const initTheme = () => {
-		const themeBtn = document.getElementById('theme-toggle');
-		const logo = document.getElementById('site-logo');
-		if (!themeBtn) return;
-		const applyTheme = (t) => {
-			document.documentElement.setAttribute('data-theme', t);
-			const dark = t === 'dark';
-			themeBtn.setAttribute('aria-pressed', String(dark));
-			// Update button labels for a11y
-			themeBtn.title = dark ? 'Switch to light theme' : 'Switch to dark theme';
-			themeBtn.setAttribute('aria-label', themeBtn.title);
-			// Always use transparent logo in both themes per preference
-			if (logo) logo.src = '/assets/EQUIVIDA transparent.png';
-			// Update browser UI theme color
-			const metaTheme = document.querySelector('meta[name="theme-color"]');
-			if (metaTheme) metaTheme.setAttribute('content', dark ? '#0f0f14' : '#50358d');
-			// Toggle icon glyph visibility
-			const iconMoon = document.getElementById('icon-moon');
-			const iconSun = document.getElementById('icon-sun');
-			if (iconMoon && iconSun) {
-				if (dark) { iconMoon.setAttribute('hidden', ''); iconSun.removeAttribute('hidden'); }
-				else { iconSun.setAttribute('hidden', ''); iconMoon.removeAttribute('hidden'); }
-			}
-		};
-		const saved = localStorage.getItem('theme') || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
-		applyTheme(saved);
-		themeBtn.addEventListener('click', () => {
-			const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-			applyTheme(next);
-			localStorage.setItem('theme', next);
-		});
-	};
-	initTheme();
+	// Theme is now managed by scripts/theme.js (loaded first in <head>)
+	// This script handles page-specific functionality only
+
 	const form = document.querySelector('form[data-contact]');
 	if (!form) {
 		// Reveal animations and count-up for homepage
@@ -215,5 +184,4 @@
 		}
 	});
 })();
-
 
