@@ -282,3 +282,16 @@ p { margin: 0 0 var(--space-4); }
 /* Radii: 8px; Spacing scale: 4,8,12,16,24,32,48,64 */
 
 
+
+/* Dark theme for hero section - ensure gradient updates properly */
+html[data-theme="dark"] .hero-bg {
+	background: radial-gradient(1200px 800px at 20% 20%, rgba(255,255,255,.05), transparent 60%), radial-gradient(1000px 700px at 80% 30%, rgba(255,255,255,.03), transparent 60%), linear-gradient(135deg, var(--primary), var(--accent)) !important;
+}
+
+html[data-theme="dark"] .hero::before {
+	background: radial-gradient(circle at 30% 30%, rgba(136, 209, 160, .25), transparent 60%);
+}
+
+html[data-theme="dark"] .hero::after {
+	background: radial-gradient(circle at 70% 70%, rgba(126, 106, 199, .25), transparent 60%);
+}
