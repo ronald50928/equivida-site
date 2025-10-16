@@ -55,11 +55,11 @@ html[data-theme="dark"] h2::after { background: linear-gradient(90deg, #5aa380, 
 .site-header.scrolled { background: rgba(255,255,255,.8); box-shadow: 0 10px 32px rgba(0,0,0,.12); }
 .site-header .actions .btn { background: transparent; border-color: #ddd; }
 /* Theme toggle button inverts by theme with higher specificity */
-.site-header .actions .theme-toggle { background: #000; color: #fff; border-color: #000; }
+.site-header .actions .theme-toggle { background: #50358d; color: #fff; border-color: #50358d; }
 .site-header .actions .theme-toggle:hover { opacity: .9; }
 html[data-theme="dark"] .site-header .actions .theme-toggle { background: #fff; color: #0f0f14; border-color: #fff; }
 /* Theme toggle button inverts by theme */
-.site-header .theme-toggle { background: #000; color: #fff; border-color: transparent; }
+.site-header .theme-toggle { background: #50358d; color: #fff; border-color: transparent; }
 .site-header .theme-toggle:hover { opacity: .9; }
 html[data-theme="dark"] .site-header .theme-toggle { background: #fff; color: #0f0f14; border-color: transparent; }
 html[data-theme="dark"] .site-header { background: rgba(10,10,16,.7); }
