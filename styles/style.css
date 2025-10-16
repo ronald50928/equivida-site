@@ -54,14 +54,21 @@ html[data-theme="dark"] h2::after { background: linear-gradient(90deg, #5aa380, 
 .site-header.glass { background: rgba(255,255,255,.6); backdrop-filter: blur(10px); box-shadow: 0 8px 30px rgba(0,0,0,.08); border-bottom: 1px solid rgba(255,255,255,.3); }
 .site-header.scrolled { background: rgba(255,255,255,.8); box-shadow: 0 10px 32px rgba(0,0,0,.12); }
 .site-header .actions .btn { background: transparent; border-color: #ddd; }
-/* Theme toggle button inverts by theme with higher specificity */
-.site-header .actions .theme-toggle { background: #000; color: #fff; border-color: #000; }
-.site-header .actions .theme-toggle:hover { opacity: .9; }
-html[data-theme="dark"] .site-header .actions .theme-toggle { background: #fff; color: #0f0f14; border-color: #fff; }
-/* Theme toggle button inverts by theme */
-.site-header .theme-toggle { background: #000; color: #fff; border-color: transparent; }
-.site-header .theme-toggle:hover { opacity: .9; }
-html[data-theme="dark"] .site-header .theme-toggle { background: #fff; color: #0f0f14; border-color: transparent; }
+/* Theme toggle button (unified) */
+[id="theme-toggle"] {
+	background: #000;
+	color: #fff;
+	border-color: transparent;
+	transition: opacity 0.2s ease;
+}
+[id="theme-toggle"]:hover {
+	opacity: 0.9;
+}
+html[data-theme="dark"] [id="theme-toggle"] {
+	background: #fff;
+	color: #0f0f14;
+	border-color: transparent;
+}
 html[data-theme="dark"] .site-header { background: rgba(10,10,16,.7); }
 html[data-theme="dark"] .site-header.glass { background: rgba(16,16,24,.5); box-shadow: 0 8px 30px rgba(0,0,0,.4); border-bottom-color: rgba(255,255,255,.08); }
 html[data-theme="dark"] .site-header.scrolled { background: rgba(20,20,30,.7); box-shadow: 0 10px 32px rgba(0,0,0,.55); }
