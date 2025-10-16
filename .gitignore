@@ -20,3 +20,9 @@ node_modules/
 # Editor
 .vscode/
 .idea/
+
+# Development Audit Files (not needed for production)
+THEME_AUDIT_REPORT.md
+THEME_FINAL_STATUS.md
+docs/
+scripts/toggle-theme-inline.js
