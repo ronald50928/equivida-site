@@ -147,3 +147,25 @@ Ensure event listeners are attached after the DOM is fully parsed.
 
 For a complete, click-enabled solution, implement Option 1 (inline event handler) above.
 
+
+---
+
+## 🔍 Update: Content Security Policy (CSP) Identified
+
+**New Finding:** CloudFront's Content Security Policy is blocking external JavaScript execution.
+
+**CSP Error:** `Refused to execute inline event handler because it violates the following Content Security Policy`
+
+**Impact:** This explains why button clicks weren't working - the CSP prevents:
+1. Inline event handlers (onclick attributes)
+2. Potentially the external script execution context itself
+
+**Root Cause:** CloudFront security headers set CSP to restrict script execution for security.
+
+**Workaround:** Theme functionality still works via:
+- System preference detection on page load
+- LocalStorage persistence
+- Manual console commands: `window.toggleTheme()`
+
+**Solution:** Update Terraform CloudFront configuration to allow theme.js in CSP, or consider a workaround that doesn't require JavaScript event handlers.
+
