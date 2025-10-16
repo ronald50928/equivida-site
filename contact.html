@@ -3,50 +3,57 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact | Equivida</title>
-    <meta name="description" content="Let’s create together. Share your goals and we’ll help design a better workplace.">
+    <title>Contact Equivida • Let's Evolve Together</title>
+    <meta name="description" content="Start a conversation about people, systems, and AI evolving together.">
     <link rel="canonical" href="https://equivida.services/contact.html">
+    <meta name="theme-color" content="#50358d">
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="/styles/style.css" as="style">
+    <meta property="og:title" content="Contact Equivida • Let's Evolve Together">
+    <meta property="og:description" content="Start a conversation about people, systems, and AI evolving together.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://equivida.services/contact.html">
+    <meta property="og:image" content="https://equivida.services/assets/og.png">
+    <meta property="og:image:alt" content="Equivida brand mark over gradient background">
+    <meta property="og:site_name" content="Equivida">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="/styles/style.css">
+    <link rel="apple-touch-icon" href="/assets/favicon.ico">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(!t&&window.matchMedia){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t||'light');}catch(e){}})();</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" role="banner">
       <div class="container header-inner">
-        <a class="logo" href="/"><img src="/assets/logo.svg" alt="Equivida" width="128" height="32"></a>
+        <a class="logo" href="/"><img id="site-logo" src="/assets/EQUIVIDA transparent.png" alt="Equivida"></a>
         <nav aria-label="Main navigation">
           <ul class="nav">
             <li><a href="/about.html">About</a></li>
             <li><a href="/services.html">Services</a></li>
-            <li><a href="/process.html">Approach</a></li>
-            <li><a href="/impact.html">Impact</a></li>
             <li><a href="/contact.html" aria-current="page">Contact</a></li>
           </ul>
         </nav>
-        <a class="btn cta" href="/contact.html">Let’s Talk</a>
+        <div class="actions" style="gap:12px;">
+          <a class="btn cta" href="/contact.html">Let’s Talk</a>
+          <button class="btn theme-toggle" type="button" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false" title="Switch to dark theme" style="width:56px;height:56px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px">
+            <svg id="icon-moon" aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            <svg id="icon-sun" aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" hidden><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+        </div>
       </div>
     </header>
 
     <main id="main" class="section">
       <div class="container">
-        <h1>Let’s Create Together</h1>
-        <p class="lead">We’d love to learn about your goals. Let’s design a better workplace together.</p>
+        <h1>Let's evolve together.</h1>
+        <p class="lead">Tell us about your goals or challenges. We'll listen, assess, and co-design a path that brings people, systems, and AI into better harmony.</p>
 
-        <form data-contact class="card" action="#" method="post" novalidate>
-          <div class="grid" style="gap:16px; grid-template-columns:1fr 1fr;">
-            <label> Name
-              <input required type="text" name="name" autocomplete="name" />
-            </label>
-            <label> Email
-              <input required type="email" name="email" autocomplete="email" />
-            </label>
-          </div>
-          <label> Message
-            <textarea required name="message" rows="6"></textarea>
-          </label>
+        <div class="card" role="region" aria-label="Contact options" style="display:flex;flex-direction:column;gap:16px;">
+          <p>We respond within 2 business days. Your message goes directly to our team.</p>
           <div class="actions" style="justify-content:flex-start;">
-            <button class="btn primary" type="submit">Send</button>
+            <a class="btn primary" href="mailto:contactus@equivida.services?subject=Equivida%20Website%20Inquiry">Email us</a>
           </div>
-        </form>
+        </div>
 
         <section class="section">
           <p><strong>Direct contact:</strong> <a href="mailto:contactus@equivida.services">contactus@equivida.services</a> · Park Ridge, NJ</p>
@@ -60,13 +67,13 @@
           <ul class="footer-nav">
             <li><a href="/about.html">About</a></li>
             <li><a href="/services.html">Services</a></li>
-            <li><a href="/process.html">Approach</a></li>
-            <li><a href="/impact.html">Impact</a></li>
             <li><a href="/contact.html" aria-current="page">Contact</a></li>
           </ul>
         </nav>
         <div class="footer-meta">
           <a href="mailto:contactus@equivida.services">contactus@equivida.services</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://www.linkedin.com/company/equividaservices" target="_blank" rel="noopener noreferrer" aria-label="Equivida on LinkedIn">LinkedIn</a>
           <span aria-hidden="true">·</span>
           <span>© 2025 Equivida LLC</span>
         </div>

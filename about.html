@@ -3,54 +3,94 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About | Equivida</title>
-    <meta name="description" content="Equivida blends heart and technology to redefine human resources. Our mission, story, and values.">
+    <title>About Equivida • People + AI, Evolving Together</title>
+    <meta name="description" content="We integrate purpose, people, and tech. Meet Gina (human strategy) and Ron (HR-tech).">
     <link rel="canonical" href="https://equivida.services/about.html">
+    <meta name="theme-color" content="#50358d">
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="/styles/style.css" as="style">
+    <meta property="og:title" content="About Equivida • People + AI, Evolving Together">
+    <meta property="og:description" content="We integrate purpose, people, and tech. Meet Gina (human strategy) and Ron (HR-tech).">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://equivida.services/about.html">
+    <meta property="og:image" content="https://equivida.services/assets/og.png">
+    <meta property="og:image:alt" content="Equivida brand mark over gradient background">
+    <meta property="og:site_name" content="Equivida">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="/styles/style.css">
+    <link rel="apple-touch-icon" href="/assets/favicon.ico">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(!t&&window.matchMedia){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t||'light');}catch(e){}})();</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" role="banner">
       <div class="container header-inner">
         <a class="logo" href="/" aria-label="Equivida home">
-          <img src="/assets/logo.svg" alt="Equivida" width="128" height="32" loading="eager" decoding="async">
+          <img id="site-logo" src="/assets/EQUIVIDA transparent.png" alt="Equivida" loading="eager" decoding="async">
         </a>
         <nav aria-label="Main navigation">
           <ul class="nav">
             <li><a href="/about.html" aria-current="page">About</a></li>
             <li><a href="/services.html">Services</a></li>
-            <li><a href="/process.html">Approach</a></li>
-            <li><a href="/impact.html">Impact</a></li>
             <li><a href="/contact.html">Contact</a></li>
           </ul>
         </nav>
-        <a class="btn cta" href="/contact.html">Let’s Talk</a>
+        <div class="actions" style="gap:12px;">
+          <a class="btn cta" href="/contact.html">Let’s Talk</a>
+          <button class="btn theme-toggle" type="button" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false" title="Switch to dark theme" style="width:56px;height:56px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px">
+            <svg id="icon-moon" aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            <svg id="icon-sun" aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" hidden><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+        </div>
       </div>
     </header>
 
     <main id="main" class="section">
       <div class="container">
-        <h1>About Equivida</h1>
-        <p class="lead">We help teams thrive by blending human insight with modern technology.</p>
+        <h1>People + AI, evolving together.</h1>
+        <p class="lead">We imagine a workplace where technology amplifies human strengths—not competes with them. Equivida exists to help organizations integrate purpose, people, and intelligent systems without losing either.</p>
 
-        <section aria-labelledby="mission-title" class="section">
-          <h2 id="mission-title">Our Mission</h2>
-          <p>To redefine human resources by blending heart and technology.</p>
-        </section>
-
-        <section aria-labelledby="story-title" class="section">
-          <h2 id="story-title">Our Story</h2>
-          <p>Founded in Park Ridge, NJ, Equivida brings together HR experts, design thinkers, and technologists passionate about creating thriving workplaces.</p>
+        <section class="section" aria-labelledby="mission-story-title">
+          <h2 id="mission-story-title" class="sr-only">Mission and Story</h2>
+          <div class="grid two">
+            <div>
+              <h2 id="mission-title">Our Mission</h2>
+              <p>Helping people find their place and optimize their impact in an AI-driven workplace.</p>
+            </div>
+            <div>
+              <h2 id="story-title">Our Story</h2>
+              <p>Many teams rush into AI without aligning roles, processes, or culture. The result is friction and distrust. We build the balance—human strategy and intelligent systems working in concert.</p>
+            </div>
+          </div>
         </section>
 
         <section aria-labelledby="values-title" class="section muted">
           <h2 id="values-title">Our Values</h2>
           <div class="grid cards">
-            <article class="card"><h3>Empathy</h3><p>We listen deeply to understand people and context.</p></article>
-            <article class="card"><h3>Integrity</h3><p>We operate with clarity, respect, and accountability.</p></article>
-            <article class="card"><h3>Innovation</h3><p>We design systems that unlock human potential.</p></article>
-            <article class="card"><h3>Collaboration</h3><p>We build with—not for—our clients and communities.</p></article>
+            <article class="card"><h3>Empathy first: systems must respect lived experience.</h3></article>
+            <article class="card"><h3>Clarity over complexity: intuitive workflows over complexity theater.</h3></article>
+            <article class="card"><h3>Ethical AI: transparency, fairness, explainability by design.</h3></article>
+            <article class="card"><h3>Iterative growth: pilot, learn, and evolve together.</h3></article>
           </div>
+        </section>
+
+        <section aria-labelledby="team-title" class="section">
+          <h2 id="team-title">Our Team</h2>
+          <div class="grid cards team">
+            <article class="card">
+              <img class="avatar rounded" src="/assets/gina.webp" alt="Gina Ly Gonzalez — Founder & Human Strategy Lead" loading="lazy" decoding="async">
+              <h3>Gina Ly Gonzalez</h3>
+              <p class="subtle">Founder & Human Strategy Lead</p>
+              <p>Gina helps organizations align culture, leadership, and people operations around clarity and purpose. With more than a decade in HR and organizational design, she is passionate about helping individuals find their place—and their potential—in evolving workplaces. She leads the human side of Equivida, ensuring transformation begins and ends with empathy.</p>
+            </article>
+            <article class="card">
+              <img class="avatar rounded" src="/assets/ron.webp" alt="Ron Rodriguez — Technology Architect & HR-Tech Lead" loading="lazy" decoding="async">
+              <h3>Ron Rodriguez</h3>
+              <p class="subtle">Technology Architect & HR-Tech Lead</p>
+              <p>Ron designs the system side of Equivida's work—integrating HR technology, automation, and AI into cohesive, transparent workflows that scale with intention. He bridges strategy and code so technology remains fair, explainable, and truly supportive of human judgment.</p>
+            </article>
+          </div>
+        </section>
         </section>
       </div>
     </main>
@@ -61,13 +101,13 @@
           <ul class="footer-nav">
             <li><a href="/about.html" aria-current="page">About</a></li>
             <li><a href="/services.html">Services</a></li>
-            <li><a href="/process.html">Approach</a></li>
-            <li><a href="/impact.html">Impact</a></li>
             <li><a href="/contact.html">Contact</a></li>
           </ul>
         </nav>
         <div class="footer-meta">
           <a href="mailto:contactus@equivida.services">contactus@equivida.services</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://www.linkedin.com/company/equividaservices" target="_blank" rel="noopener noreferrer" aria-label="Equivida on LinkedIn">LinkedIn</a>
           <span aria-hidden="true">·</span>
           <span>© 2025 Equivida LLC</span>
         </div>

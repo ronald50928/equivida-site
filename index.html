@@ -10,30 +10,44 @@
     <meta property="og:description" content="Empathy-driven strategy and modern technology to align people, process, and purpose.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://equivida.services/">
-    <meta property="og:image" content="/assets/og.png">
+    <meta property="og:image" content="https://equivida.services/assets/og.png">
+    <meta property="og:image:alt" content="Equivida brand mark over gradient background">
+    <meta property="og:site_name" content="Equivida">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#50358d">
     <link rel="icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/favicon.ico">
     <link rel="preload" href="/styles/style.css" as="style">
     <link rel="stylesheet" href="/styles/style.css">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(!t&&window.matchMedia){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t||'light');}catch(e){}})();</script>
+    <script type="application/ld+json">{
+      "@context":"https://schema.org","@type":"Organization",
+      "name":"Equivida","url":"https://equivida.services/",
+      "logo":"https://equivida.services/assets/og.png",
+      "sameAs":["https://www.linkedin.com/company/equividaservices"]
+    }</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" role="banner" aria-label="Primary">
       <div class="container header-inner">
         <a class="logo" href="/" aria-label="Equivida home">
-          <img src="/assets/logo.svg" alt="Equivida" width="128" height="32" loading="eager" decoding="async">
+          <img id="site-logo" src="/assets/EQUIVIDA transparent.png" alt="Equivida" loading="eager" decoding="async">
         </a>
         <nav aria-label="Main navigation">
           <ul class="nav">
             <li><a href="/about.html">About</a></li>
             <li><a href="/services.html">Services</a></li>
-            <li><a href="/process.html">Approach</a></li>
-            <li><a href="/impact.html">Impact</a></li>
             <li><a href="/contact.html">Contact</a></li>
           </ul>
         </nav>
-        <a class="btn cta" href="/contact.html">Let’s Talk</a>
+        <div class="actions" style="gap:12px;">
+          <a class="btn cta" href="/contact.html">Let’s Talk</a>
+          <button class="btn theme-toggle" type="button" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false" title="Switch to dark theme" style="width:56px;height:56px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px">
+            <svg id="icon-moon" aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            <svg id="icon-sun" aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" hidden><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -41,39 +55,59 @@
       <!-- HERO -->
       <section class="hero" aria-labelledby="hero-title">
         <div class="container hero-inner">
-          <h1 id="hero-title">Empowering People. Enabling Organizations.</h1>
-          <p class="lead">We help teams thrive by blending human insight with modern technology.</p>
+          <h1 id="hero-title" class="gradient-text">Helping people find their place and optimize their impact in an AI-driven workplace</h1>
+          <p class="lead">We partner with organizations to bridge human insight and intelligent systems—designing HR strategy and people-centric technology so teams thrive together.</p>
           <div class="actions">
-            <a class="btn primary" href="/contact.html">Let’s Create Together</a>
+            <a class="btn primary" href="/contact.html">Let's Create Together</a>
           </div>
         </div>
         <div class="hero-bg" aria-hidden="true"></div>
       </section>
 
+      <!-- HIGHLIGHTS -->
+      <section class="section highlights" aria-labelledby="highlights-title">
+        <div class="container">
+          <h2 id="highlights-title" class="reveal">Proven outcomes</h2>
+          <div class="stats">
+            <div class="stat reveal"><span class="num" data-count target="25">0%</span><span class="label">Engagement lift</span></div>
+            <div class="stat reveal"><span class="num" data-count target="40">0%</span><span class="label">Faster onboarding</span></div>
+            <div class="stat reveal"><span class="num" data-count target="3">0x</span><span class="label">Decision clarity</span></div>
+          </div>
+        </div>
+      </section>
+
       <!-- INTRO -->
       <section class="section" aria-labelledby="intro-title">
         <div class="container">
-          <h2 id="intro-title">Human potential meets smart design.</h2>
-          <p>At Equivida, we help organizations align people, process, and purpose through empathy-driven strategy and modern technology.</p>
+          <h2 id="intro-title" class="reveal">Human potential meets smart design.</h2>
+          <p class="reveal">At Equivida, we help organizations align people, process, and purpose through empathy-driven strategy and modern technology.</p>
         </div>
       </section>
+
+
 
       <!-- WHAT WE DO BEST -->
       <section class="section muted" aria-labelledby="best-title">
         <div class="container">
           <h2 id="best-title">What we do best</h2>
           <div class="grid cards">
-            <article class="card">
-              <h3>Empathy-Driven Productivity</h3>
-              <p>Helping leaders inspire action through understanding.</p>
+            <article class="card reveal">
+              <div class="icon-circle" aria-hidden="true">E</div>
+              <h3>Human Strategy, Reimagined</h3>
+              <p>Align structure, roles, and culture to purpose—so every person works in their zone of highest value.</p>
+              <a class="btn small cta" href="/services.html#coaching">Learn more</a>
             </article>
-            <article class="card">
-              <h3>Technology that Serves People</h3>
-              <p>Smart systems that enhance—not replace—human value.</p>
+            <article class="card reveal">
+              <div class="icon-circle" aria-hidden="true">T</div>
+              <h3>Tech with Heart</h3>
+              <p>Build HR tools and AI workflows that support—not replace—human judgment and accountability.</p>
+              <a class="btn small cta" href="/services.html#systems">Learn more</a>
             </article>
-            <article class="card">
-              <h3>Innovation for Growth</h3>
-              <p>Turning workplace challenges into transformation.</p>
+            <article class="card reveal">
+              <div class="icon-circle" aria-hidden="true">I</div>
+              <h3>Impact Optimization</h3>
+              <p>Use data to reduce friction, increase clarity, and focus energy where it matters most.</p>
+              <a class="btn small cta" href="/services.html#design">Learn more</a>
             </article>
           </div>
         </div>
@@ -82,10 +116,12 @@
       <!-- CTA BANNER -->
       <section class="cta-banner" aria-labelledby="cta-title">
         <div class="container">
-          <h2 id="cta-title">Ready to transform your workforce?</h2>
-          <a class="btn secondary" href="/contact.html" aria-label="Go to contact page">Start the conversation</a>
+          <h2 id="cta-title">Ready to evolve your people, systems, and impact?</h2>
+          <a class="btn secondary" href="/contact.html" aria-label="Go to contact page">Contact</a>
         </div>
       </section>
+
+      
     </main>
 
     <footer class="site-footer" role="contentinfo">
@@ -94,13 +130,13 @@
           <ul class="footer-nav">
             <li><a href="/about.html">About</a></li>
             <li><a href="/services.html">Services</a></li>
-            <li><a href="/process.html">Approach</a></li>
-            <li><a href="/impact.html">Impact</a></li>
             <li><a href="/contact.html">Contact</a></li>
           </ul>
         </nav>
         <div class="footer-meta">
           <a href="mailto:contactus@equivida.services">contactus@equivida.services</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://www.linkedin.com/company/equividaservices" target="_blank" rel="noopener noreferrer" aria-label="Equivida on LinkedIn">LinkedIn</a>
           <span aria-hidden="true">·</span>
           <span>© 2025 Equivida LLC</span>
         </div>

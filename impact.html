@@ -3,40 +3,64 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Impact | Equivida</title>
-    <meta name="description" content="Results that speak for themselves—testimonials and outcomes from our clients.">
+    <title>Impact • When People     <title>Impact | Equivida</title> AI Align, Results Follow</title>
+    <meta name="description" content="See how alignment of people and AI reduces friction and improves clarity.">
     <link rel="canonical" href="https://equivida.services/impact.html">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#50358d">
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="/styles/style.css" as="style">
+    <meta property="og:title" content="Impact • When People     <meta property="og:title" content="Impact | Equivida"> AI Align, Results Follow">
+    <meta property="og:description" content="See how alignment of people and AI reduces friction and improves clarity.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://equivida.services/impact.html">
+    <meta property="og:image" content="https://equivida.services/assets/og.png">
+    <meta property="og:image:alt" content="Equivida brand mark over gradient background">
+    <meta property="og:site_name" content="Equivida">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="/styles/style.css">
+    <link rel="apple-touch-icon" href="/assets/favicon.ico">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(!t&&window.matchMedia){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t||'light');}catch(e){}})();</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" role="banner">
       <div class="container header-inner">
-        <a class="logo" href="/"><img src="/assets/logo.svg" alt="Equivida" width="128" height="32"></a>
+        <a class="logo" href="/"><img id="site-logo" src="/assets/EQUIVIDA transparent.png" alt="Equivida"></a>
         <nav aria-label="Main navigation">
           <ul class="nav">
             <li><a href="/about.html">About</a></li>
             <li><a href="/services.html">Services</a></li>
-            <li><a href="/process.html">Approach</a></li>
-            <li><a href="/impact.html" aria-current="page">Impact</a></li>
             <li><a href="/contact.html">Contact</a></li>
           </ul>
         </nav>
-        <a class="btn cta" href="/contact.html">Let’s Talk</a>
+        <div class="actions" style="gap:12px;">
+          <a class="btn cta" href="/contact.html">Let’s Talk</a>
+          <button class="btn theme-toggle" type="button" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false" title="Switch to dark theme" style="width:56px;height:56px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px">
+            <svg id="icon-moon" aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            <svg id="icon-sun" aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" hidden><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+        </div>
       </div>
     </header>
 
     <main id="main" class="section">
       <div class="container">
-        <h1>Results that speak for themselves.</h1>
-        <div class="grid cards">
-          <article class="card"><p>“Our engagement rose by 25% in one quarter.”</p><p><strong>VP, Operations</strong></p></article>
-          <article class="card"><p>“Onboarding time dropped by 40% while improving quality.”</p><p><strong>Head of People</strong></p></article>
-          <article class="card"><p>“Leaders communicate with clarity and empathy now.”</p><p><strong>Director, Engineering</strong></p></article>
+        <h1>When people and AI align, impact follows.</h1>
+        <div class="carousel">
+          <div class="carousel-track" id="testimonial-track">
+            <article class="card"><p>"Equivida helped us redesign roles and rhythms—team clarity improved noticeably, and decisions now move faster."</p></article>
+            <article class="card"><p>"Their AI-supported workflows cut administrative drag and gave managers more time for real coaching."</p></article>
+            <article class="card"><p>"We finally have a path to evolve our systems without burning people out—measurable progress, humane pace."</p></article>
+          </div>
+          <div class="carousel-controls">
+            <button type="button" data-prev aria-label="Previous">‹</button>
+            <button type="button" data-next aria-label="Next">›</button>
+          </div>
         </div>
 
         <section class="section muted">
-          <p><strong>+25%</strong> engagement improvement · <strong>40%</strong> faster onboarding</p>
+          <p><strong>Less administrative time on routine tasks</strong> · <strong>Stronger adoption of HR tools</strong> · <strong>Clearer role scope and decision rights</strong> · <strong>More attention on meaningful work</strong></p>
         </section>
       </div>
     </main>
@@ -47,13 +71,13 @@
           <ul class="footer-nav">
             <li><a href="/about.html">About</a></li>
             <li><a href="/services.html">Services</a></li>
-            <li><a href="/process.html">Approach</a></li>
-            <li><a href="/impact.html" aria-current="page">Impact</a></li>
             <li><a href="/contact.html">Contact</a></li>
           </ul>
         </nav>
         <div class="footer-meta">
           <a href="mailto:contactus@equivida.services">contactus@equivida.services</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://www.linkedin.com/company/equividaservices" target="_blank" rel="noopener noreferrer" aria-label="Equivida on LinkedIn">LinkedIn</a>
           <span aria-hidden="true">·</span>
           <span>© 2025 Equivida LLC</span>
         </div>

@@ -26,7 +26,9 @@ resource "aws_s3_bucket_public_access_block" "site" {
 resource "aws_s3_bucket_server_side_encryption_configuration" "site" {
 	bucket = aws_s3_bucket.site.id
 	rule {
-		apply_server_side_encryption_by_default { sse_algorithm = "AES256" }
+		apply_server_side_encryption_by_default {
+			sse_algorithm = "AES256"
+		}
 	}
 }
 
@@ -56,15 +58,17 @@ resource "aws_s3_bucket_public_access_block" "logs" {
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "logs" {
 	bucket = aws_s3_bucket.logs.id
-	rule { apply_server_side_encryption_by_default { sse_algorithm = "AES256" } }
+	rule {
+		apply_server_side_encryption_by_default {
+			sse_algorithm = "AES256"
+		}
+	}
 }
 
 resource "aws_s3_bucket_logging" "site" {
-	bucket = aws_s3_bucket.site.id
-	logging_configuration {
-		destination_bucket_name = aws_s3_bucket.logs.id
-		destination_prefix      = "s3/"
-	}
+	bucket        = aws_s3_bucket.site.id
+	target_bucket = aws_s3_bucket.logs.id
+	target_prefix = "s3/"
 }
 
 # CloudFront OAC
@@ -83,21 +87,35 @@ resource "aws_cloudfront_response_headers_policy" "security" {
 			content_security_policy = "default-src 'self'; img-src 'self' data:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
 			override                 = true
 		}
-		content_type_options { override = true }
-		frame_options { frame_option = "DENY" override = true }
-		referrer_policy { referrer_policy = "same-origin" override = true }
+		content_type_options {
+			override = true
+		}
+		frame_options {
+			frame_option = "DENY"
+			override     = true
+		}
+		referrer_policy {
+			referrer_policy = "same-origin"
+			override        = true
+		}
 		strict_transport_security {
 			access_control_max_age_sec = 63072000
 			include_subdomains          = true
 			preload                     = true
 			override                    = true
 		}
-		xss_protection { protection = true mode_block = true override = true }
+		xss_protection {
+			protection = true
+			mode_block = true
+			override   = true
+		}
 	}
 }
 
-# ACM certificate in us-east-1 for CloudFront
+## ACM certificate in us-east-1 for CloudFront (optional)
+
 resource "aws_acm_certificate" "cert" {
+	count             = var.enable_acm && var.enable_custom_domain ? 1 : 0
 	provider          = aws.us_east_1
 	domain_name       = var.domain_name
 	validation_method = "DNS"
@@ -105,21 +123,31 @@ resource "aws_acm_certificate" "cert" {
 	tags = var.tags
 }
 
-# Route53 hosted zone (reuse if exists by name lookup)
+# Route53 hosted zone: reuse if present, else create if enabled
 data "aws_route53_zone" "primary" {
+	count        = var.enable_dns_records && var.enable_custom_domain && !var.create_hosted_zone ? 1 : 0
 	name         = "${var.domain_name}."
 	private_zone = false
 }
 
+resource "aws_route53_zone" "primary" {
+	count = var.enable_dns_records && var.enable_custom_domain && var.create_hosted_zone ? 1 : 0
+	name  = var.domain_name
+}
+
+locals {
+	zone_id = var.enable_dns_records && var.enable_custom_domain ? (var.create_hosted_zone ? aws_route53_zone.primary[0].zone_id : data.aws_route53_zone.primary[0].zone_id) : null
+}
+
 resource "aws_route53_record" "cert_validation" {
-	for_each = {
-		for dvo in aws_acm_certificate.cert.domain_validation_options : dvo.domain_name => {
+	for_each = var.enable_custom_domain ? {
+		for dvo in aws_acm_certificate.cert[0].domain_validation_options : dvo.domain_name => {
 			name   = dvo.resource_record_name
 			type   = dvo.resource_record_type
 			value  = dvo.resource_record_value
 		}
-	}
-	zone_id = data.aws_route53_zone.primary.zone_id
+	} : {}
+	zone_id = local.zone_id
 	name    = each.value.name
 	type    = each.value.type
 	records = [each.value.value]
@@ -127,8 +155,9 @@ resource "aws_route53_record" "cert_validation" {
 }
 
 resource "aws_acm_certificate_validation" "cert" {
+	count                   = var.enable_acm && var.enable_custom_domain ? 1 : 0
 	provider                = aws.us_east_1
-	certificate_arn         = aws_acm_certificate.cert.arn
+	certificate_arn         = aws_acm_certificate.cert[0].arn
 	validation_record_fqdns = [for r in aws_route53_record.cert_validation : r.fqdn]
 }
 
@@ -167,7 +196,7 @@ resource "aws_cloudfront_distribution" "site" {
 	price_class         = "PriceClass_100"
 	default_root_object = "index.html"
 
-	aliases = [var.domain_name, "www.${var.domain_name}", "preview.${var.domain_name}"]
+	aliases = var.enable_custom_domain ? [var.domain_name, "www.${var.domain_name}", "preview.${var.domain_name}"] : []
 
 	default_cache_behavior {
 		target_origin_id       = "s3-origin"
@@ -179,7 +208,12 @@ resource "aws_cloudfront_distribution" "site" {
 		min_ttl                = 0
 		default_ttl            = 3600
 		max_ttl                = 86400
-		forwarded_values { query_string = false cookies { forward = "none" } }
+		forwarded_values {
+			query_string = false
+			cookies {
+				forward = "none"
+			}
+		}
 	}
 
 	# Friendly error pages
@@ -196,64 +230,102 @@ resource "aws_cloudfront_distribution" "site" {
 		error_caching_min_ttl = 0
 	}
 
-	restrictions { geo_restriction { restriction_type = "none" } }
+	restrictions {
+		geo_restriction {
+			restriction_type = "none"
+		}
+	}
 
 	viewer_certificate {
-		acm_certificate_arn            = aws_acm_certificate_validation.cert.certificate_arn
-		minimum_protocol_version       = "TLSv1.2_2021"
-		ssl_support_method             = "sni-only"
+		acm_certificate_arn      = var.enable_acm && var.enable_custom_domain ? aws_acm_certificate_validation.cert[0].certificate_arn : null
+		cloudfront_default_certificate = var.enable_custom_domain && var.enable_acm ? false : true
+		minimum_protocol_version = "TLSv1.2_2021"
+		ssl_support_method       = "sni-only"
 	}
 
-	logging_config {
-		bucket = aws_s3_bucket.logs.bucket_domain_name
+dynamic "logging_config" {
+	for_each = var.enable_cf_logging ? [1] : []
+	content {
+		bucket          = aws_s3_bucket.logs.bucket_domain_name
 		include_cookies = false
-		prefix = "cloudfront/"
+		prefix          = "cloudfront/"
 	}
+}
 
 	tags = var.tags
 }
 
 # DNS records for root, www, and preview
 resource "aws_route53_record" "root_alias" {
-	zone_id = data.aws_route53_zone.primary.zone_id
+	count  = var.enable_dns_records && var.enable_custom_domain ? 1 : 0
+	zone_id = local.zone_id
 	name    = var.domain_name
 	type    = "A"
-	alias { name = aws_cloudfront_distribution.site.domain_name zone_id = aws_cloudfront_distribution.site.hosted_zone_id evaluate_target_health = false }
+	alias {
+		name                   = aws_cloudfront_distribution.site.domain_name
+		zone_id                = aws_cloudfront_distribution.site.hosted_zone_id
+		evaluate_target_health = false
+	}
 }
 
 resource "aws_route53_record" "root_alias_aaaa" {
-	zone_id = data.aws_route53_zone.primary.zone_id
+	count  = var.enable_dns_records && var.enable_custom_domain ? 1 : 0
+	zone_id = local.zone_id
 	name    = var.domain_name
 	type    = "AAAA"
-	alias { name = aws_cloudfront_distribution.site.domain_name zone_id = aws_cloudfront_distribution.site.hosted_zone_id evaluate_target_health = false }
+	alias {
+		name                   = aws_cloudfront_distribution.site.domain_name
+		zone_id                = aws_cloudfront_distribution.site.hosted_zone_id
+		evaluate_target_health = false
+	}
 }
 
 resource "aws_route53_record" "www_alias" {
-	zone_id = data.aws_route53_zone.primary.zone_id
+	count  = var.enable_dns_records && var.enable_custom_domain ? 1 : 0
+	zone_id = local.zone_id
 	name    = "www.${var.domain_name}"
 	type    = "A"
-	alias { name = aws_cloudfront_distribution.site.domain_name zone_id = aws_cloudfront_distribution.site.hosted_zone_id evaluate_target_health = false }
+	alias {
+		name                   = aws_cloudfront_distribution.site.domain_name
+		zone_id                = aws_cloudfront_distribution.site.hosted_zone_id
+		evaluate_target_health = false
+	}
 }
 
 resource "aws_route53_record" "www_alias_aaaa" {
-	zone_id = data.aws_route53_zone.primary.zone_id
+	count  = var.enable_dns_records && var.enable_custom_domain ? 1 : 0
+	zone_id = local.zone_id
 	name    = "www.${var.domain_name}"
 	type    = "AAAA"
-	alias { name = aws_cloudfront_distribution.site.domain_name zone_id = aws_cloudfront_distribution.site.hosted_zone_id evaluate_target_health = false }
+	alias {
+		name                   = aws_cloudfront_distribution.site.domain_name
+		zone_id                = aws_cloudfront_distribution.site.hosted_zone_id
+		evaluate_target_health = false
+	}
 }
 
 resource "aws_route53_record" "preview_alias" {
-	zone_id = data.aws_route53_zone.primary.zone_id
+	count  = var.enable_dns_records && var.enable_custom_domain ? 1 : 0
+	zone_id = local.zone_id
 	name    = "preview.${var.domain_name}"
 	type    = "A"
-	alias { name = aws_cloudfront_distribution.site.domain_name zone_id = aws_cloudfront_distribution.site.hosted_zone_id evaluate_target_health = false }
+	alias {
+		name                   = aws_cloudfront_distribution.site.domain_name
+		zone_id                = aws_cloudfront_distribution.site.hosted_zone_id
+		evaluate_target_health = false
+	}
 }
 
 resource "aws_route53_record" "preview_alias_aaaa" {
-	zone_id = data.aws_route53_zone.primary.zone_id
+	count  = var.enable_dns_records && var.enable_custom_domain ? 1 : 0
+	zone_id = local.zone_id
 	name    = "preview.${var.domain_name}"
 	type    = "AAAA"
-	alias { name = aws_cloudfront_distribution.site.domain_name zone_id = aws_cloudfront_distribution.site.hosted_zone_id evaluate_target_health = false }
+	alias {
+		name                   = aws_cloudfront_distribution.site.domain_name
+		zone_id                = aws_cloudfront_distribution.site.hosted_zone_id
+		evaluate_target_health = false
+	}
 }
 
 # CloudWatch alarm for 4xx

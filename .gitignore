@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Terraform
+**/.terraform/**
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfplan
+*.tfvars
+.override.tf
+terraform.tfvars
+
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# Editor
+.vscode/
+.idea/

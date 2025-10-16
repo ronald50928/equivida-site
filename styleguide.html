@@ -8,7 +8,22 @@
     <link rel="stylesheet" href="/styles/style.css">
   </head>
   <body>
-    <main class="section">
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="logo" href="/"><img id="site-logo" src="/assets/EQUIVIDA transparent.png" alt="Equivida"></a>
+        <nav aria-label="Main navigation">
+          <ul class="nav">
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="actions" style="gap:12px;">
+          <a class="btn cta" href="/contact.html">Let’s Talk</a>
+        </div>
+      </div>
+    </header>
+    <main id="main" class="section">
       <div class="container">
         <h1>Style Guide</h1>
         <section class="section">
@@ -46,6 +61,24 @@
         </section>
       </div>
     </main>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <nav aria-label="Footer">
+          <ul class="footer-nav">
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="footer-meta">
+          <a href="mailto:contactus@equivida.services">contactus@equivida.services</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://www.linkedin.com/company/equividaservices" target="_blank" rel="noopener noreferrer" aria-label="Equivida on LinkedIn">LinkedIn</a>
+          <span aria-hidden="true">·</span>
+          <span>© 2025 Equivida LLC</span>
+        </div>
+      </div>
+    </footer>
   </body>
   </html>
 

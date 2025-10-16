@@ -6,20 +6,49 @@
     <title>Page not found | Equivida</title>
     <meta name="robots" content="noindex">
     <link rel="stylesheet" href="/styles/style.css">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(!t&&window.matchMedia){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t||'light');}catch(e){}})();</script>
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header" role="banner">
       <div class="container header-inner">
-        <a class="logo" href="/"><img src="/assets/logo.svg" alt="Equivida" width="128" height="32"></a>
+        <a class="logo" href="/"><img id="site-logo" src="/assets/EQUIVIDA transparent.png" alt="Equivida"></a>
+        <nav aria-label="Main navigation">
+          <ul class="nav">
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="actions" style="gap:12px;">
+          <a class="btn cta" href="/contact.html">Let’s Talk</a>
+        </div>
       </div>
     </header>
-    <main class="section">
+    <main id="main" class="section">
       <div class="container">
         <h1>We couldn’t find that page</h1>
         <p>Let’s get you back to where things make sense.</p>
         <p><a class="btn cta" href="/">Return home</a></p>
       </div>
     </main>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <nav aria-label="Footer">
+          <ul class="footer-nav">
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="footer-meta">
+          <a href="mailto:contactus@equivida.services">contactus@equivida.services</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://www.linkedin.com/company/equividaservices" target="_blank" rel="noopener noreferrer" aria-label="Equivida on LinkedIn">LinkedIn</a>
+          <span aria-hidden="true">·</span>
+          <span>© 2025 Equivida LLC</span>
+        </div>
+      </div>
+    </footer>
   </body>
   </html>
 
