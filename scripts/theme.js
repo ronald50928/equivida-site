@@ -48,7 +48,7 @@ function applyTheme(theme) {
 }
 
 /**
- * Toggle theme between light and dark
+ * Toggle theme between light and dark - exposed globally
  */
 window.toggleTheme = function() {
 	const current = document.documentElement.getAttribute('data-theme') || LIGHT;
@@ -87,23 +87,33 @@ function initTheme() {
 }
 
 /**
- * Initialize when document is ready
+ * Attach click listeners to theme toggle buttons
  */
-function initializeTheme() {
-	if (document.readyState === 'loading') {
-		// DOM still loading
-		document.addEventListener('DOMContentLoaded', () => {
-			initTheme();
-		});
-	} else {
-		// DOM already ready
-		initTheme();
-	}
+function attachEventListeners() {
+	// Use document.addEventListener for event delegation (works immediately)
+	document.addEventListener('click', function(e) {
+		if (e.target.matches('[id="theme-toggle"]') || e.target.closest('[id="theme-toggle"]')) {
+			e.preventDefault();
+			e.stopPropagation();
+			window.toggleTheme();
+		}
+	}, true); // Use capture phase for reliability
 }
 
-// Start initialization
-initializeTheme();
+/**
+ * Initialize theme system
+ */
+function init() {
+	// Apply theme immediately (synchronous)
+	initTheme();
+	
+	// Attach event listeners (works even if button isn't loaded yet)
+	attachEventListeners();
+}
 
-// Expose globally for debugging
+// Initialize immediately - no waiting for DOM ready
+init();
+
+// Expose utility functions globally for debugging
 window.getTheme = () => document.documentElement.getAttribute('data-theme');
 window.setTheme = (t) => { applyTheme(t); localStorage.setItem(THEME_KEY, t); };
