@@ -50,11 +50,7 @@ function applyTheme(theme) {
 /**
  * Toggle theme between light and dark
  */
-function toggleTheme(e) {
-	if (e && e.preventDefault) {
-		e.preventDefault();
-	}
-	
+window.toggleTheme = function() {
 	const current = document.documentElement.getAttribute('data-theme') || LIGHT;
 	const next = current === DARK ? LIGHT : DARK;
 	applyTheme(next);
@@ -63,7 +59,7 @@ function toggleTheme(e) {
 	} catch (err) {
 		console.warn('localStorage error:', err);
 	}
-}
+};
 
 /**
  * Initialize theme on page load
@@ -91,19 +87,6 @@ function initTheme() {
 }
 
 /**
- * Setup theme toggle button listeners
- */
-function setupToggleButtons() {
-	const btn = document.getElementById('theme-toggle');
-	if (btn) {
-		// Remove any existing listeners to prevent dupes
-		btn.removeEventListener('click', toggleTheme);
-		// Add listener
-		btn.addEventListener('click', toggleTheme, false);
-	}
-}
-
-/**
  * Initialize when document is ready
  */
 function initializeTheme() {
@@ -111,29 +94,16 @@ function initializeTheme() {
 		// DOM still loading
 		document.addEventListener('DOMContentLoaded', () => {
 			initTheme();
-			setupToggleButtons();
 		});
 	} else {
 		// DOM already ready
 		initTheme();
-		setupToggleButtons();
 	}
-	
-	// Watch for dynamically added buttons
-	const observer = new MutationObserver(() => {
-		setupToggleButtons();
-	});
-	
-	observer.observe(document.body, { 
-		childList: true, 
-		subtree: true 
-	});
 }
 
 // Start initialization
 initializeTheme();
 
 // Expose globally for debugging
-window.toggleTheme = toggleTheme;
 window.getTheme = () => document.documentElement.getAttribute('data-theme');
 window.setTheme = (t) => { applyTheme(t); localStorage.setItem(THEME_KEY, t); };
