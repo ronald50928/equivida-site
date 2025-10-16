@@ -74,21 +74,47 @@
 	}
 
 	/**
+	 * Toggle theme between light and dark
+	 */
+	function toggleTheme() {
+		const current = document.documentElement.getAttribute('data-theme') || LIGHT;
+		const next = current === DARK ? LIGHT : DARK;
+		applyTheme(next);
+		try {
+			localStorage.setItem(THEME_KEY, next);
+		} catch (err) {
+			console.warn('localStorage error:', err);
+		}
+	}
+
+	/**
 	 * Setup theme toggle button listeners
 	 */
 	function setupToggleButtons() {
+		// Direct button click handler - most reliable
+		const setupButton = () => {
+			const btn = document.getElementById('theme-toggle');
+			if (btn) {
+				btn.removeEventListener('click', toggleTheme);
+				btn.addEventListener('click', toggleTheme);
+			}
+		};
+		
+		// Try to setup immediately
+		setupButton();
+		
+		// Also setup as fallback with document delegation
 		document.addEventListener('click', (e) => {
 			if (e.target.closest('[id="theme-toggle"]')) {
-				const current = document.documentElement.getAttribute('data-theme') || LIGHT;
-				const next = current === DARK ? LIGHT : DARK;
-				applyTheme(next);
-				try {
-					localStorage.setItem(THEME_KEY, next);
-				} catch (err) {
-					console.warn('localStorage error:', err);
-				}
+				toggleTheme();
 			}
 		});
+		
+		// And watch for DOM changes that add the button
+		if (window.MutationObserver) {
+			const observer = new MutationObserver(setupButton);
+			observer.observe(document.body, { childList: true, subtree: true });
+		}
 	}
 
 	// Initialize on DOM ready
