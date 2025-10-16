@@ -274,7 +274,7 @@ h3 { font-size: 1.05rem; margin: 0 0 var(--space-2); }
 p { margin: 0 0 var(--space-4); }
 
 /* Utility */
-.lead { max-width: 60ch; margin: 0 auto; }
+.lead { text-align: justify; }
 .actions { display: flex; gap: var(--space-3); justify-content: center; }
 
 /* Style Guide (for README reference) */
